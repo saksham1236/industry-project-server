@@ -31,9 +31,7 @@ app.get('/images/:imageName', async (req, res) => {
             return res.status(404).json({ error: `${req.params.imageName} Image not found` });
         }
 
-        console.log('Downloaded File Information:', typeof file, file);
-
-        const imgWidth = req.query.width || 800;
+        const imgWidth = req.query.width || 400;
         const imageResized = await sharp(buffer)
         .resize({ width: imgWidth })
         .toBuffer();
